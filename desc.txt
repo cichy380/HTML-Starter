@@ -1,7 +1,0 @@
-Simply front-end template based on HTML5 Boilerplate, Bootstrap, gulp and Bower.
-
---
-
-HTML Starter helps front-end developers build websites based on advance technologies.
-
-Requires...

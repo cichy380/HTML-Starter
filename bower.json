@@ -1,0 +1,6 @@
+{
+  "name": "HTML Starter",
+  "dependencies": {
+    "jquery": "1.x"
+  }
+}
