@@ -1,6 +1,7 @@
 {
   "name": "HTML Starter",
   "dependencies": {
-    "jquery": "1.x"
+    "jquery": "1.x",
+    "bootstrap-sass": "3.3.6"
   }
 }
