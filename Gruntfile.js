@@ -35,9 +35,23 @@ module.exports = function(grunt) {
                 ],
                 dest: 'dist/js/scripts.min.js'
             }
+        },
+
+        // Run predefined tasks whenever watched file patterns are added, changed or deleted
+        // [https://github.com/gruntjs/grunt-contrib-watch]
+        watch: {
+            js: {
+                files: [
+                    'assets/scripts/*.js'
+                ],
+                tasks: ['uglify']
+            }
         }
     });
 
     //  Minify files with UglifyJS
     grunt.loadNpmTasks('grunt-contrib-uglify');
+
+    // Run tasks whenever watched files change.
+    grunt.loadNpmTasks('grunt-contrib-watch');
 };
