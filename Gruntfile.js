@@ -44,6 +44,23 @@ module.exports = function(grunt) {
             }
         },
 
+        // Concatenate files
+        concat: {
+            options: {
+                sourceMap: true,
+                separator: ';'
+            },
+            dist: {
+                src: [
+                    // common bootstrap.js file with all components
+                    'vendor/bootstrap-sass/assets/javascripts/bootstrap.js',
+                    // project JS files
+                    'assets/scripts/*.js'
+                ],
+                dest: 'dist/js/scripts.js' // 'destination'
+            }
+        },
+
         // Compile Sass to CSS
         sass: {
             develop: {
@@ -85,6 +102,10 @@ module.exports = function(grunt) {
     // [https://github.com/gruntjs/grunt-contrib-uglify]
     grunt.loadNpmTasks('grunt-contrib-uglify'); // requires Grunt >=0.4.0
 
+    // Concatenate files
+    // [https://github.com/gruntjs/grunt-contrib-concat]
+    grunt.loadNpmTasks('grunt-contrib-concat'); // requires Grunt >=0.4.0
+
     // Run tasks whenever watched files change
     // [https://github.com/gruntjs/grunt-contrib-watch]
     grunt.loadNpmTasks('grunt-contrib-watch'); // requires Grunt >=0.4.0
@@ -97,5 +118,10 @@ module.exports = function(grunt) {
     // [https://github.com/gruntjs/grunt-contrib-sass]
     grunt.loadNpmTasks('grunt-contrib-sass'); // requires Grunt >=0.4.0
 
+
     grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod']);
+
+    // phase of development (no minification, adding source map)
+    // need to change the name of the CSS and JS files in the HTML
+    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop']);
 };
