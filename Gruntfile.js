@@ -80,6 +80,17 @@ module.exports = function(grunt) {
             }
         },
 
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true, // enable dynamic expansion
+                    cwd: 'assets/images/', // src matches are relative to this path
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dist/images/' // destination path prefix
+                }]
+            }
+        },
+
         // Run predefined tasks whenever watched file patterns are added, changed or deleted
         watch: {
             js: {
@@ -94,6 +105,12 @@ module.exports = function(grunt) {
                     'assets/styles/**/*.scss'
                 ],
                 tasks: ['sass:prod']
+            },
+            img: {
+                files: [
+                    'assets/images/**/*'
+                ],
+                tasks: ['imagemin']
             }
         }
     });
@@ -118,10 +135,14 @@ module.exports = function(grunt) {
     // [https://github.com/gruntjs/grunt-contrib-sass]
     grunt.loadNpmTasks('grunt-contrib-sass'); // requires Grunt >=0.4.0
 
+    // Minify PNG, JPEG and GIF images
+    // [https://github.com/gruntjs/grunt-contrib-imagemin]
+    grunt.loadNpmTasks('grunt-contrib-imagemin'); // requires Grunt >=0.4.0
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod']);
+
+    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod', 'imagemin']);
 
     // phase of development (no minification, adding source map)
     // need to change the name of the CSS and JS files in the HTML
-    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop']);
+    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop', 'imagemin']);
 };
