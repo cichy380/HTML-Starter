@@ -4,6 +4,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        // Validate JavaScript files with JSHint
+        // [https://github.com/gruntjs/grunt-contrib-jshint]
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: ['Gruntfile.js', 'assets/scripts/*.js']
+        },
+
         //  Minify javascript files with UglifyJS
         // [https://github.com/gruntjs/grunt-contrib-uglify]
         uglify: {
@@ -42,9 +51,10 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: [
+                    'Gruntfile.js',
                     'assets/scripts/*.js'
                 ],
-                tasks: ['uglify']
+                tasks: ['jshint', 'uglify']
             }
         }
     });
@@ -52,6 +62,9 @@ module.exports = function(grunt) {
     //  Minify files with UglifyJS
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    // Run tasks whenever watched files change.
+    // Run tasks whenever watched files change
     grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // Validate files with JSHint
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 };

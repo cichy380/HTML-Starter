@@ -39,7 +39,7 @@
             var namespace = HTMLStarter;  // indicate your obj literal namespace here
 
             funcname = (funcname === undefined) ? 'init' : funcname;
-            if (func !== '' && namespace[func] && typeof namespace[func][funcname] == 'function'){
+            if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function'){
                 namespace[func][funcname](args);
             }
         },
