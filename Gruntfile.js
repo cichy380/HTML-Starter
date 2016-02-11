@@ -5,7 +5,6 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         // Validate JavaScript files with JSHint
-        // [https://github.com/gruntjs/grunt-contrib-jshint]
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
@@ -14,15 +13,14 @@ module.exports = function(grunt) {
         },
 
         //  Minify javascript files with UglifyJS
-        // [https://github.com/gruntjs/grunt-contrib-uglify]
         uglify: {
             options: {
                 sourceMap: false,
                 sourceMapName: 'dist/js/scripts.min.js.map'
             },
             build: {
-                src: [
-                    // You can choose only the components that you need to reduce the size of destination file...
+                src: [ // 'source'
+                    // you can choose only the components that you need to reduce the size of destination file...
                     //'vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
                     //'vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
                     //'vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js',
@@ -39,15 +37,33 @@ module.exports = function(grunt) {
                     // ...or set common bootstrap.js file with all components.
                     'vendor/bootstrap-sass/assets/javascripts/bootstrap.js',
 
-                    // Project JS files.
+                    // project JS files
                     'assets/scripts/*.js'
                 ],
-                dest: 'dist/js/scripts.min.js'
+                dest: 'dist/js/scripts.min.js' // 'destination'
+            }
+        },
+
+        // Compile Sass to CSS
+        sass: {
+            develop: {
+                options: {},
+                files: {
+                    'dist/css/styles.css': 'assets/styles/main.scss' // 'destination': 'source'
+                }
+            },
+            prod: {
+                options: {
+                    style: 'compressed', // can be: nested, compact, compressed, expanded
+                    sourcemap: 'none' // can be: auto, file, inline, none
+                },
+                files: {
+                    'dist/css/styles.min.css': 'assets/styles/main.scss' // 'destination': 'source'
+                }
             }
         },
 
         // Run predefined tasks whenever watched file patterns are added, changed or deleted
-        // [https://github.com/gruntjs/grunt-contrib-watch]
         watch: {
             js: {
                 files: [
@@ -55,16 +71,31 @@ module.exports = function(grunt) {
                     'assets/scripts/*.js'
                 ],
                 tasks: ['jshint', 'uglify']
+            },
+            css: {
+                files: [
+                    'assets/styles/**/*.scss'
+                ],
+                tasks: ['sass:prod']
             }
         }
     });
 
     //  Minify files with UglifyJS
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    // [https://github.com/gruntjs/grunt-contrib-uglify]
+    grunt.loadNpmTasks('grunt-contrib-uglify'); // requires Grunt >=0.4.0
 
     // Run tasks whenever watched files change
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    // [https://github.com/gruntjs/grunt-contrib-watch]
+    grunt.loadNpmTasks('grunt-contrib-watch'); // requires Grunt >=0.4.0
 
     // Validate files with JSHint
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    // [https://github.com/gruntjs/grunt-contrib-jshint]
+    grunt.loadNpmTasks('grunt-contrib-jshint'); // requires Grunt >=0.4.0
+
+    // Compile Sass to CSS
+    // [https://github.com/gruntjs/grunt-contrib-sass]
+    grunt.loadNpmTasks('grunt-contrib-sass'); // requires Grunt >=0.4.0
+
+    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod']);
 };

@@ -5,6 +5,7 @@ vendor
 bower_components
 node_modules
 npm-debug.log
+.sass-cache
 temp
 # PHP Storm project folder
 .idea
