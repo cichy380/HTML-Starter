@@ -21,21 +21,21 @@ module.exports = function(grunt) {
             build: {
                 src: [ // 'source'
                     // you can choose only the components that you need to reduce the size of destination file...
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/carousel.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/popover.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/tab.js',
-                    //'vendor/bootstrap-sass/assets/javascripts/bootstrap/affix.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js',
+                    //'bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js',
 
                     // ...or set common bootstrap.js file with all components.
-                    'vendor/bootstrap-sass/assets/javascripts/bootstrap.js',
+                    'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 
                     // project JS files
                     'assets/scripts/*.js'
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
             dist: {
                 src: [
                     // common bootstrap.js file with all components
-                    'vendor/bootstrap-sass/assets/javascripts/bootstrap.js',
+                    'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
                     // project JS files
                     'assets/scripts/*.js'
                 ],
