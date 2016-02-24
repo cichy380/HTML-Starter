@@ -34,7 +34,7 @@ HTML Starter uses [Grunt](http://gruntjs.com/) as its build system and [Bower](h
 
 ### Install Grunt and Bower
 
-Building the template requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
+Building the template requires [node.js](http://nodejs.org/download/). I recommend you update to the latest version of npm: `npm install -g npm@latest`.
 
 From the command line:
 
