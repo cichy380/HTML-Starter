@@ -80,6 +80,7 @@ module.exports = function(grunt) {
             }
         },
 
+        // Minify PNG, JPEG and GIF images
         imagemin: {
             dynamic: {
                 files: [{
@@ -88,6 +89,20 @@ module.exports = function(grunt) {
                     src: ['**/*.{png,jpg,gif}'],
                     dest: 'dist/images/' // destination path prefix
                 }]
+            }
+        },
+
+        // Include content from other files
+        includes: {
+            files: {
+                src: 'assets/*.html', // source files
+                dest: 'dist', // destination directory
+                flatten: true,
+                cwd: '.',
+                options: {
+                    includePath: 'assets/include', // source folder
+                    silent: true
+                }
             }
         },
 
@@ -142,10 +157,14 @@ module.exports = function(grunt) {
     // [https://github.com/gruntjs/grunt-contrib-imagemin]
     grunt.loadNpmTasks('grunt-contrib-imagemin'); // requires Grunt >=0.4.0
 
+    // Include content from other files (think php includes)
+    // [https://github.com/vanetix/grunt-includes]
+    grunt.loadNpmTasks('grunt-includes'); // requires Grunt >=0.4.0
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod', 'imagemin']);
+
+    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod', 'imagemin', 'includes']);
 
     // phase of development (no minification, adding source map)
     // need to change the name of the CSS and JS files in the HTML
-    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop', 'imagemin']);
+    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop', 'imagemin', 'includes']);
 };

@@ -1,63 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>HTML Starter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="dist/css/styles.min.css">
-</head>
+include "head.html"
 
 <body class="page home">
 
-<!--[if lt IE 8]>
-<div class="alert alert-warning">
-    You are using an <strong>outdated</strong> browser. Please
-    <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-</div>
-<![endif]-->
-
-<header class="banner">
-    <!-- Bootstrap Navbar  [http://getbootstrap.com/components/#navbar] -->
-    <nav class="navbar navbar-static-top navbar-inverse">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">HTML Starter</a>
-            </div>
-
-            <!-- Collect the nav links and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Homepage <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">About us <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about-us.html">About the company</a></li>
-                            <li><a href="about-us.html">Our team</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="about-us.html">We are hiring now!</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="works.html">Works</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-</header><!-- /.banner -->
+include "ie-alert.html"
+include "header.html"
 
 <div class="wrap container" role="document">
     <div class="content row">
@@ -566,38 +514,7 @@
     </div>
 </div>
 
-<footer class="content-info" style="background:#efefef; ">
-    <div class="container">
-        <small>&copy; Company name 2016</small>
-    </div>
-</footer>
-
-<!-- Google CDN jQuery snippet with local fallback -->
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="vendor/jquery/dist/jquery.min.js"><\/script>')</script>
-
-<script src="dist/js/scripts.min.js"></script>
-
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    (function (b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-                function () {
-                    (b[l].q = b[l].q || []).push(arguments)
-                });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = 'https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-</script>
-
-<!-- use the code below to enabling Live Reload: -->
-<!-- <script src="//localhost:35729/livereload.js"></script> -->
-<!-- read more on: https://github.com/gruntjs/grunt-contrib-watch#enabling-live-reload-in-your-html -->
+include "footer.html"
+include "scripts-footer.html"
 </body>
 </html>
