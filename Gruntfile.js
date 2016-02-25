@@ -106,6 +106,27 @@ module.exports = function(grunt) {
             }
         },
 
+        // Copy files and folders
+        copy: {
+            bootstrap: { // icon-fonts from Bootstrap to project dist
+                expand: true,
+                cwd: 'bower_components/bootstrap-sass/assets/fonts',
+                src: '**',
+                dest: 'dist/fonts/'
+            },
+            fonts: { // icon-fonts from assets to project dist
+                expand: true,
+                cwd: 'assets/fonts',
+                src: '**',
+                dest: 'dist/fonts/'
+            },
+            jquery: {
+                expand: false,
+                src: 'bower_components/jquery/dist/jquery.min.js',
+                dest: 'dist/js/jquery.min.js'
+            }
+        },
+
         // Run predefined tasks whenever watched file patterns are added, changed or deleted
         watch: {
             options: {
@@ -129,6 +150,19 @@ module.exports = function(grunt) {
                     'assets/images/**/*'
                 ],
                 tasks: ['imagemin']
+            },
+            html: {
+                files: [
+                    'assets/*.html',
+                    'assets/include/*'
+                ],
+                tasks: ['includes']
+            },
+            font: {
+                files: [
+                    'assets/fonts/**/*'
+                ],
+                tasks: ['copy:fonts']
             }
         }
     });
@@ -161,10 +195,14 @@ module.exports = function(grunt) {
     // [https://github.com/vanetix/grunt-includes]
     grunt.loadNpmTasks('grunt-includes'); // requires Grunt >=0.4.0
 
+    // Copy files and folders
+    // [https://github.com/gruntjs/grunt-contrib-copy]
+    grunt.loadNpmTasks('grunt-contrib-copy'); // requires Grunt >=0.4.0
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod', 'imagemin', 'includes']);
+
+    grunt.registerTask('default', ['jshint', 'uglify', 'sass:prod', 'imagemin', 'includes', 'copy:bootstrap', 'copy:jquery']);
 
     // phase of development (no minification, adding source map)
     // need to change the name of the CSS and JS files in the HTML
-    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop', 'imagemin', 'includes']);
+    grunt.registerTask('dev', ['jshint', 'concat', 'sass:develop', 'imagemin', 'includes', 'copy:bootstrap', 'copy:jquery']);
 };

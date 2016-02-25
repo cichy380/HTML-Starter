@@ -3,6 +3,7 @@
 dist
 vendor
 bower_components
+assets/fonts/bootstrap
 node_modules
 npm-debug.log
 .sass-cache
