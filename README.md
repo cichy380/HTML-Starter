@@ -2,7 +2,7 @@
 
 HTML Starter helps front-end developers build websites based on advance technologies. Responsive templates including many frequently used UI elements based on HTML5 input types with ARIA roles, styles in SCSS files and JavaScript DOM-based Routing technique.
 
-* Demo: [http://templates.silversite.pl/html-starter/](http://templates.silversite.pl/html-starter/)
+* Demo: [http://example.silversite.pl/html-starter/](http://example.silversite.pl/html-starter/)
 
 ## Requirements
 
